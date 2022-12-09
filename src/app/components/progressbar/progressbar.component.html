@@ -1,0 +1,4 @@
+<div class="progressbar-container">
+    <span *ngFor="let hour of hoursPassed" [ngClass]="{'passed': hour}"></span>
+</div>
+<h1 id="current-time">{{time}}</h1>
