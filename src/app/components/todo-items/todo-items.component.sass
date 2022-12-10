@@ -21,6 +21,7 @@
     padding: 15px
     border-radius: 4px
     align-items: center
+    transition: 100ms ease-out
     &:before
       content: ""
       width: 6px
@@ -46,6 +47,14 @@
       justify-content: center
       border: 1px solid rgba(255,255,255,0.66)
       cursor: pointer
-      transition: background 150ms ease-out
+      transition: 250ms ease-out
       &:hover
         background: rgba(255,255,255,0.33)
+
+.completed
+  opacity: 0.33
+  p
+    text-decoration: line-through
+  span
+    border-radius: 100% !important
+    background-color: rgba(255,255,255,0.66)

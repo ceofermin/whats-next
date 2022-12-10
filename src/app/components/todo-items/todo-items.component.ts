@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from './Task';
+import { TodoService } from '../../services/todo/todo.service'
+
+import { Task } from '../../Task';
 
 @Component({
   selector: 'app-todo-items',
@@ -7,30 +9,15 @@ import { Task } from './Task';
   styleUrls: ['./todo-items.component.sass']
 })
 export class TodoItemsComponent implements OnInit {
-  tasks: Task[] = [
-    {
-      priority: 0,
-      text: "Water the ficus trees in the backyard",
-      isDone: false
-    },
-    {
-      priority: 0,
-      text: "Reroute the cables in the master bedroom",
-      isDone: false
-    },
-    {
-      priority: 1,
-      text: "Tell the children that I love them",
-      isDone: false
-    }
-  ];
+  tasks: Task[] = [];
 
-  getTodoItems(): Task[] {
-    return this.tasks;
+  toggleTask(item: any): void {
+    item.isDone = !item.isDone;
   }
 
-  todoItems: Task[] = this.getTodoItems();
+  constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
+    this.tasks = this.todoService.getTodoItems();
   }
 }

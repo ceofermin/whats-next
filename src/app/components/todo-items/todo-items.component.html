@@ -5,9 +5,9 @@
         <span>3 items left</span>
     </div>
     <div class="todo-items-container">
-        <div *ngFor="let todoItem of todoItems">
-            <p>{{todoItem.text}}</p>
-            <span></span>
+        <div *ngFor="let item of tasks" [ngClass]="{'completed': item.isDone}">
+            <p>{{item.text}}</p>
+            <span (click)="toggleTask(item)"></span>
         </div>
     </div>
 </div>
