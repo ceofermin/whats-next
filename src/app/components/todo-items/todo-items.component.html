@@ -1,0 +1,13 @@
+<div class="todo-items">
+    <div class="list-header">
+        <h2>Tasks to Complete</h2>
+        <div class="hline"></div>
+        <span>3 items left</span>
+    </div>
+    <div class="todo-items-container">
+        <div *ngFor="let todoItem of todoItems">
+            <p>{{todoItem.text}}</p>
+            <span></span>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,12 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-progressbar',
   templateUrl: './progressbar.component.html',
   styleUrls: ['./progressbar.component.sass']
 })
-export class ProgressbarComponent implements OnInit, OnChanges {
+export class ProgressbarComponent implements OnInit, OnChanges, OnDestroy {
+  id: any;
   now = new Date();
   getCurrentTime(): string {
     let rValue: string = "";
@@ -30,11 +31,17 @@ export class ProgressbarComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit(): void {
-    setInterval(() => {
+    this.id = setInterval(() => {
       this.now = new Date();
       this.time = this.getCurrentTime();
       this.hoursPassed = this.getHoursPassed();
     }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.id) {
+      clearInterval(this.id);
+    }
   }
 
   ngOnChanges(changes: any): void {}
