@@ -21,6 +21,10 @@ export class TodoItemsComponent implements OnInit {
     this.todoService.addTodoItem(task);
   }
 
+  getActiveTasks(): Task[] {
+    return this.tasks.filter((e) => e.isDone != true);
+  }
+
   ngOnInit(): void {
     this.todoService.getTodoItems().subscribe((tasks) => this.tasks = tasks);
   }
