@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
-import { TodoInputFieldComponent } from './components/todo-input-field/todo-input-field.component';
 import { TodoItemsComponent } from './components/todo-items/todo-items.component';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { TodoItemsComponent } from './components/todo-items/todo-items.component
     AppComponent,
     HeaderComponent,
     ProgressbarComponent,
-    TodoInputFieldComponent,
     TodoItemsComponent,
   ],
   imports: [

@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs'
+
 import { Task } from '../../Task'
 
 @Injectable({
@@ -23,8 +25,9 @@ export class TodoService {
     }
   ];
 
-  getTodoItems(): Task[] {
-    return this.tasks;
+  getTodoItems(): Observable<Task[]> {
+    let tasks = of(this.tasks);
+    return tasks;
   }
 
   constructor() {}
