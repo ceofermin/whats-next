@@ -10,24 +10,18 @@ export class TodoService {
   tasks: Task[] = [
     {
       priority: 0,
-      text: "Water the ficus trees in the backyard",
+      text: "List out my tasks for the day",
       isDone: false
     },
-    {
-      priority: 0,
-      text: "Reroute the cables in the master bedroom",
-      isDone: false
-    },
-    {
-      priority: 1,
-      text: "Tell the children that I love them",
-      isDone: false
-    }
   ];
 
   getTodoItems(): Observable<Task[]> {
     let tasks = of(this.tasks);
     return tasks;
+  }
+
+  addTodoItem(task: Task): void {
+    this.tasks.push(task);
   }
 
   constructor() {}

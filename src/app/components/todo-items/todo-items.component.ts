@@ -11,11 +11,15 @@ import { Task } from '../../Task';
 export class TodoItemsComponent implements OnInit {
   tasks: Task[] = [];
 
+  constructor(private todoService: TodoService) {}
+
   toggleTask(item: any): void {
     item.isDone = !item.isDone;
   }
 
-  constructor(private todoService: TodoService) {}
+  addTask(task: Task): void {
+    this.todoService.addTodoItem(task);
+  }
 
   ngOnInit(): void {
     this.todoService.getTodoItems().subscribe((tasks) => this.tasks = tasks);

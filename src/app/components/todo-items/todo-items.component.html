@@ -2,8 +2,9 @@
     <div class="list-header">
         <h2>Tasks to Complete</h2>
         <div class="hline"></div>
-        <span>3 items left</span>
+        <span>{{ tasks.length }} items left</span>
     </div>
+    <app-add-todo (onAddTask)="addTask($event)"></app-add-todo>
     <div class="todo-items-container">
         <div *ngFor="let item of tasks" [ngClass]="{'completed': item.isDone}">
             <p>{{item.text}}</p>
