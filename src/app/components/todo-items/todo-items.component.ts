@@ -14,7 +14,7 @@ export class TodoItemsComponent implements OnInit {
   constructor(private todoService: TodoService) {}
 
   toggleTask(item: any): void {
-    item.isDone = !item.isDone;
+    this.todoService.toggleTodoItem(item);
   }
 
   addTask(task: Task): void {
