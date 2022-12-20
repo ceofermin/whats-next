@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
@@ -6,7 +6,10 @@ import { faClock } from '@fortawesome/free-solid-svg-icons'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.sass']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   hicon = faClock;
-  today = new Date();
+
+  constructor() {}
+
+  ngOnInit(): void {}
 }

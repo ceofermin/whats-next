@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
+import { TimeService } from '../../services/time/time.service';
 
 @Component({
   selector: 'app-progressbar',
@@ -7,21 +7,19 @@ import { interval } from 'rxjs';
   styleUrls: ['./progressbar.component.sass']
 })
 export class ProgressbarComponent implements OnInit {
-  now = new Date();
   hours: boolean[];
 
-  getHoursPassed(): boolean[] {
-    return [...Array(24)].map((e, i) => this.now.getHours() > i);
+  constructor(private timeService: TimeService) {
+    this.hours = this.hoursPassed;
   }
 
-  constructor() {
-    this.hours = this.getHoursPassed();
+  get hoursPassed(): boolean[] {
+    return [...Array(24)].map((e, i) => this.timeService.hours > i);
   }
 
   ngOnInit(): void {
-    interval(1000).subscribe(() => {
-      this.now = new Date();
-      this.hours = this.getHoursPassed();
+    this.timeService.sInterval.subscribe(() => {
+      this.hours = this.hoursPassed;
     });
   }
 }

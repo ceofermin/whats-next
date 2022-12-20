@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { TodoItemsComponent } from './components/todo-items/todo-items.component';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
+import { ClockComponent } from './components/clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AddTodoComponent } from './components/add-todo/add-todo.component';
     ProgressbarComponent,
     TodoItemsComponent,
     AddTodoComponent,
+    ClockComponent,
   ],
   imports: [
     BrowserModule,
