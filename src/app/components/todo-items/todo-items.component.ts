@@ -13,12 +13,17 @@ export class TodoItemsComponent implements OnInit {
 
   constructor(private todoService: TodoService) {}
 
-  toggleTask(item: any): void {
-    this.todoService.toggleTodoItem(item);
+  toggleTask(task: Task): void {
+    task.isDone = !task.isDone;
+    if (task.isDone) {
+      this.todoService.removeTask(task).subscribe(
+        (task) => this.tasks = this.tasks.filter((t) => t.id !== task.id)
+      );
+    }
   }
 
   addTask(task: Task): void {
-    this.todoService.addTodoItem(task);
+    this.todoService.addTask(task).subscribe((task) => this.tasks.unshift(task));
   }
 
   getActiveTasks(): Task[] {
@@ -26,6 +31,6 @@ export class TodoItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todoService.getTodoItems().subscribe((tasks) => this.tasks = tasks);
+    this.todoService.tasks.subscribe((tasks) => this.tasks = tasks);
   }
 }

@@ -1,4 +1,4 @@
-import { Observable, interval } from 'rxjs';
+import { interval } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 
