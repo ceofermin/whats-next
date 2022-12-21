@@ -31,7 +31,7 @@ export class TodoService {
   }
 
   get tasks(): Observable<Task[]> {
-    console.table(this.storedTasks);
+    // console.table(this.storedTasks);
     try {
       return of(this.storedTasks);
     } catch (err) {
