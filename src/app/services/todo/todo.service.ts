@@ -44,10 +44,6 @@ export class TodoService {
     return of(task);
   }
 
-  getStoredTaskById(taskId: number): Task {
-    return this.storedTasks.filter((e) => e.id == taskId)[0]
-  }
-
   removeTask(task: Task): Observable<Task> {
     this.storedTasks = this.storedTasks.filter((e) => e.id !== task.id);
     return of(task);
