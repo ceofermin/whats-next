@@ -17,7 +17,7 @@ const todoItemTrigger = trigger("todoItemFade", [
       opacity: 0,
       margin: 0,
       height: 0,
-      padding: 0,
+      padding: "0 15px",
       transform: "translateY(50%)"
     }),
     animate("250ms ease-out")
@@ -25,7 +25,7 @@ const todoItemTrigger = trigger("todoItemFade", [
   transition(":leave", [
     animate("250ms ease-out", style({
       opacity: 0,
-      padding: 0,
+      padding: "0 15px",
       margin: 0,
       height: 0
     }))
