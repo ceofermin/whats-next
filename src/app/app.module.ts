@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -23,6 +24,7 @@ import { ClockComponent } from './components/clock/clock.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FontAwesomeModule,
     FormsModule
   ],
