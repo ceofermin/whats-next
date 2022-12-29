@@ -6,8 +6,8 @@
     </div>
     <app-add-todo (onAddTask)="addTask($event)"></app-add-todo>
     <div class="todo-items-container">
-        <div *ngFor="let item of tasks" [ngClass]="{'completed': item.isDone}" [@todoItemFade]>
-            <p>{{item.text}}</p>
+        <div *ngFor="let item of tasks" [ngClass]="{'completed': item.isDone}" @todoItemFade>
+            <p contenteditable="true" (keydown)="onTodoEdit($event)" (blur)="updateTask(item, $event)">{{item.text}}</p>
             <span (click)="toggleTask(item)"></span>
         </div>
     </div>

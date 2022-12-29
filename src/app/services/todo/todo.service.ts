@@ -31,7 +31,6 @@ export class TodoService {
   }
 
   get tasks(): Observable<Task[]> {
-    // console.table(this.storedTasks);
     try {
       return of(this.storedTasks);
     } catch (err) {
@@ -41,6 +40,14 @@ export class TodoService {
 
   addTask(task: Task): Observable<Task> {
     this.storedTasks = [task].concat(this.storedTasks);
+    return of(task);
+  }
+
+  updateTask(task: Task): Observable<Task> {
+    this.storedTasks = this.storedTasks.map((t) => {
+      if (t.id == task.id) return task;
+      else return t;
+    });
     return of(task);
   }
 

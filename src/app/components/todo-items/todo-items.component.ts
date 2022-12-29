@@ -40,6 +40,7 @@ const todoItemTrigger = trigger("todoItemFade", [
 })
 export class TodoItemsComponent implements OnInit {
   tasks: Task[] = [];
+  editTaskId: number = 0;
 
   constructor(private todoService: TodoService) {}
 
@@ -50,6 +51,20 @@ export class TodoItemsComponent implements OnInit {
         (task) => this.tasks = this.tasks.filter((t) => t.id !== task.id)
       );
     }
+  }
+
+  onTodoEdit(event: KeyboardEvent): void {
+    const pElem: HTMLElement = event.target as HTMLElement;
+    if (event.key == "Enter") {
+      event.preventDefault();
+      pElem.blur();
+    }
+  }
+
+  updateTask(task: Task, event: Event): void {
+    const targetElem: HTMLElement = event.target as HTMLElement;
+    task.text = targetElem.textContent as string;
+    this.todoService.updateTask(task).subscribe(console.table);
   }
 
   addTask(task: Task): void {
