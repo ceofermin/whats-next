@@ -64,6 +64,7 @@ export class TodoItemsComponent implements OnInit {
   updateTask(task: Task, event: Event): void {
     const targetElem: HTMLElement = event.target as HTMLElement;
     task.text = targetElem.textContent as string;
+    if (!task.text) this.toggleTask(task);
     this.todoService.updateTask(task).subscribe(console.table);
   }
 
