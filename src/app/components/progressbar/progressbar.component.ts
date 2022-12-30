@@ -14,7 +14,7 @@ export class ProgressbarComponent implements OnInit {
   ngOnInit(): void {
     this.timeService.currentTime$.subscribe((t) => {
       this.hours = [...Array(24)].map((e, i) => t[0] > i);
-      console.log(this.hours);
+      // console.log(this.hours);
     });
   }
 }
