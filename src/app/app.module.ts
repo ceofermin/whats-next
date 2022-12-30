@@ -12,6 +12,7 @@ import { ProgressbarComponent } from './components/progressbar/progressbar.compo
 import { TodoItemsComponent } from './components/todo-items/todo-items.component';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { ClockComponent } from './components/clock/clock.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ClockComponent } from './components/clock/clock.component';
     TodoItemsComponent,
     AddTodoComponent,
     ClockComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
