@@ -7,13 +7,14 @@ import { TimeService } from '../../services/time/time.service';
   styleUrls: ['./clock.component.sass']
 })
 export class ClockComponent implements OnInit {
-  fTime: string[] = [...this.timeService.clockTime];
+  fTime: string[] = ["00", "00", "00"];
 
   constructor(private timeService: TimeService) {}
 
   ngOnInit(): void {
-    this.timeService.sInterval.subscribe(() => {
-      this.fTime = [...this.timeService.clockTime];
-    });
+    this.timeService.currentTime$.subscribe((t) => {
+      this.fTime = t.map((e) => (e < 10)
+        ? e.toString().padStart(2, "0") : e.toString());
+    })
   }
 }

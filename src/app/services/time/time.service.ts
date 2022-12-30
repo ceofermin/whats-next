@@ -1,4 +1,4 @@
-import { interval } from 'rxjs';
+import { BehaviorSubject, interval } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 
@@ -6,34 +6,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TimeService {
-  sInterval = interval(1000);
-
   constructor() {}
 
-  get date(): string {
-    return new Date().toDateString();
+  get currentTime(): number[] {
+    const d = new Date();
+    return [d.getHours(), d.getMinutes(), d.getSeconds()];
   }
 
-  get hours(): number {
-    return new Date().getHours();
-  }
-
-  get minutes(): number {
-    return new Date().getMinutes();
-  }
-
-  get seconds(): number {
-    return new Date().getSeconds();
-  }
-
-  get clockTime(): string[] {
-    const padTime = (e: number) => (e < 10)
-      ? e.toString().padStart(2, "0") : e.toString();
-
-    const fHours = padTime(this.hours);
-    const fMinutes = padTime(this.minutes);
-    const fSeconds = padTime(this.seconds);
-
-    return [fHours, fMinutes, fSeconds];
+  get currentTime$(): BehaviorSubject<number[]> {
+    const time = new BehaviorSubject(this.currentTime);
+    interval(1000).subscribe(() => time.next(this.currentTime));
+    return time;
   }
 }

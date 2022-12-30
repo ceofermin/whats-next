@@ -7,19 +7,13 @@ import { TimeService } from '../../services/time/time.service';
   styleUrls: ['./progressbar.component.sass']
 })
 export class ProgressbarComponent implements OnInit {
-  hours: boolean[];
+  hours: boolean[] = [];
 
-  constructor(private timeService: TimeService) {
-    this.hours = this.hoursPassed;
-  }
-
-  get hoursPassed(): boolean[] {
-    return [...Array(24)].map((e, i) => this.timeService.hours > i);
-  }
+  constructor(private timeService: TimeService) {}
 
   ngOnInit(): void {
-    this.timeService.sInterval.subscribe(() => {
-      this.hours = this.hoursPassed;
+    this.timeService.currentTime$.subscribe((t) => {
+      this.hours = [...Array(24).map((e, i) => t[0] > i)];
     });
   }
 }
