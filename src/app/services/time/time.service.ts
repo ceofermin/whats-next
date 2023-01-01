@@ -18,4 +18,11 @@ export class TimeService {
     interval(1000).subscribe(() => time.next(this.currentTime));
     return time;
   }
+
+  get dayCompletedPercent$(): BehaviorSubject<number> {
+    const getDayCompleted = () => (this.currentTime[0] / 24) * 100;
+    const dayCompleted = new BehaviorSubject(getDayCompleted());
+    this.currentTime$.subscribe(() => dayCompleted.next(getDayCompleted()));
+    return dayCompleted;
+  }
 }
