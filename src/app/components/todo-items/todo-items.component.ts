@@ -11,6 +11,25 @@ import { TodoService } from '../../services/todo/todo.service'
 
 import { Task } from '../../Task';
 
+const fadeSlideIn = transition(":enter", [
+  style({
+    opacity: 0,
+    transform: "translateY(-15%)",
+    height: 0,
+    margin: "0 auto"
+  }),
+  animate("333ms ease-out")
+]);
+
+const fadeSlideOut = transition(":leave", [
+  animate("150ms ease-out", style({
+    opacity: 0,
+    transform: "translateY(15%)",
+    height: 0,
+    margin: "0 auto"
+  })),
+]);
+
 const todoItemTrigger = trigger("todoItemFade", [
   transition(":enter", [
     style({
@@ -30,13 +49,15 @@ const todoItemTrigger = trigger("todoItemFade", [
       height: 0
     }))
   ])
-])
+]);
+
+const noItemsTrigger = trigger("noItemsFade", [fadeSlideIn, fadeSlideOut])
 
 @Component({
   selector: 'app-todo-items',
   templateUrl: './todo-items.component.html',
   styleUrls: ['./todo-items.component.sass'],
-  animations: [todoItemTrigger]
+  animations: [todoItemTrigger, noItemsTrigger]
 })
 export class TodoItemsComponent implements OnInit {
   tasks: Task[] = [];
