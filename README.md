@@ -1,5 +1,7 @@
 # WhatsNext
 
+## A todo app made with Angular
+
 ![What's Next App](screenshots/noitems.png "What's Next")
 
 ## Development server
